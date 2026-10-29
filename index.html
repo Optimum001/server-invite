@@ -209,6 +209,9 @@
     }
     .note strong { font-weight: 600; }
     .note a { color: var(--accent); font-weight: 500; }
+    .note p { margin: 0 0 0.6rem; }
+    .app-list { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.55rem; }
+    .app-list strong { overflow-wrap: anywhere; }
 
     @media (max-width: 480px) {
       h1 { font-size: 1.6rem; }
@@ -291,11 +294,33 @@
       All links only work when Tailscale is connected. Jellyfin and Seerr use the same login.
     </p>
 
+    <p class="section-label">On Your Phone</p>
+
     <div class="note">
-      <strong>Tip:</strong> For the best experience, install the
-      <a href="https://jellyfin.org/downloads/clients" target="_blank" rel="noopener">Jellyfin app</a> and the
-      <a href="https://immich.app/download" target="_blank" rel="noopener">Immich app</a>
-      on your phone. Use <strong>http://100.86.174.40:8096</strong> as the Jellyfin server address and <strong>http://100.86.174.40:2283</strong> for Immich when the app asks.
+      <p>Everything works in your phone's browser, but if you'd rather have apps, here are your options. Keep Tailscale connected either way.</p>
+      <ul class="app-list">
+        <li>
+          <strong>Watch and request in one app (easiest):</strong> install
+          <a href="https://streamyfin.app" target="_blank" rel="noopener">Streamyfin</a> (iPhone and Android).
+          Enter <strong>http://100.86.174.40:8096</strong> as the server and sign in with your Jellyfin login.
+          Then open Streamyfin's settings, turn on <strong>Seerr</strong>, and enter <strong>http://100.86.174.40:5055</strong>.
+          You can now search, request, and watch without switching apps.
+        </li>
+        <li>
+          <strong>Just watching:</strong> the official
+          <a href="https://jellyfin.org/downloads/clients" target="_blank" rel="noopener">Jellyfin app</a> works too.
+          Use <strong>http://100.86.174.40:8096</strong> as the server address.
+        </li>
+        <li>
+          <strong>Seerr as an app icon:</strong> open <strong>http://100.86.174.40:5055</strong> in Safari (iPhone) or Chrome (Android).
+          Tap Share &rarr; <strong>Add to Home Screen</strong> (in Chrome, it's the &#8942; menu). It then opens like an app. There's nothing to install.
+        </li>
+        <li>
+          <strong>Photos:</strong> install the
+          <a href="https://immich.app/download" target="_blank" rel="noopener">Immich app</a> and use
+          <strong>http://100.86.174.40:2283</strong> as the server address. It can back up your camera roll automatically.
+        </li>
+      </ul>
     </div>
   </div>
 </body>
