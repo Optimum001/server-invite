@@ -256,45 +256,46 @@
 
     <hr class="divider">
 
-    <p class="section-label">Your Services</p>
-    <p style="color: var(--text-muted); font-size: 0.85rem; margin: -0.5rem 0 1rem; line-height: 1.5;">
-      These links only work when Tailscale is connected. Jellyfin and Seerr use the same login.
-    </p>
+    <p class="section-label">How It Works</p>
 
     <div class="services">
       <div class="service">
-        <div class="service-icon">&#127916;</div>
-        <div>
-          <div class="service-name">Jellyfin</div>
-          <div class="service-desc">Watch movies &amp; TV shows</div>
-        </div>
-        <a class="service-open" href="http://100.86.174.40:8096" target="_blank" rel="noopener">Open</a>
-      </div>
-
-      <div class="service">
         <div class="service-icon">&#128270;</div>
         <div>
-          <div class="service-name">Seerr</div>
-          <div class="service-desc">Request new movies &amp; shows</div>
+          <div class="service-name">Seerr &mdash; Find &amp; Request</div>
+          <div class="service-desc">This is where you start. Search for any movie or TV show you want to watch, then hit Request. It'll automatically download in the background &mdash; usually takes a few minutes to a couple hours depending on the size. You'll see the status change from "Requested" to "Available" when it's ready.</div>
         </div>
         <a class="service-open" href="http://100.86.174.40:5055" target="_blank" rel="noopener">Open</a>
       </div>
 
       <div class="service">
+        <div class="service-icon">&#127916;</div>
+        <div>
+          <div class="service-name">Jellyfin &mdash; Watch</div>
+          <div class="service-desc">This is where you watch everything. Once a movie or show is downloaded, it shows up here automatically. You need an account to watch &mdash; I'll create one for you. Sign in with the same login on Seerr too, so you don't need separate passwords.</div>
+        </div>
+        <a class="service-open" href="http://100.86.174.40:8096" target="_blank" rel="noopener">Open</a>
+      </div>
+
+      <div class="service">
         <div class="service-icon">&#128247;</div>
         <div>
-          <div class="service-name">Immich</div>
-          <div class="service-desc">Photo &amp; video backup</div>
+          <div class="service-name">Immich &mdash; Photo Backup</div>
+          <div class="service-desc">Private photo and video storage, like Google Photos but hosted by me. Your photos are only visible to you &mdash; nobody else can see them. You get a separate login for this one. The phone app can automatically back up your camera roll.</div>
         </div>
         <a class="service-open" href="http://100.86.174.40:2283" target="_blank" rel="noopener">Open</a>
       </div>
     </div>
 
+    <p style="color: var(--text-muted); font-size: 0.82rem; margin: -0.25rem 0 1.5rem; line-height: 1.5;">
+      All links only work when Tailscale is connected. Jellyfin and Seerr use the same login.
+    </p>
+
     <div class="note">
       <strong>Tip:</strong> For the best experience, install the
       <a href="https://jellyfin.org/downloads/clients" target="_blank" rel="noopener">Jellyfin app</a> and the
       <a href="https://immich.app/download" target="_blank" rel="noopener">Immich app</a>
-      on your phone. Set the server address to the link above when the app asks. Immich can automatically back up your camera roll.
+      on your phone. Use <strong>http://100.86.174.40:8096</strong> as the Jellyfin server address and <strong>http://100.86.174.40:2283</strong> for Immich when the app asks.
     </div>
   </div>
 </body>
