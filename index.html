@@ -138,6 +138,8 @@
       transition: opacity 0.15s;
     }
     .btn-link:hover { opacity: 0.85; text-decoration: none; }
+    .step-detail a.btn-link { color: #fff; }
+    .step > * { min-width: 0; }
 
     .divider {
       border: none;
@@ -213,6 +215,63 @@
     .app-list { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: 0.55rem; }
     .app-list strong { overflow-wrap: anywhere; }
 
+    .mock {
+      margin: 0.85rem 0 0.25rem;
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      padding: 0.75rem;
+      background: var(--bg);
+    }
+    .mock-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin: 0 0 0.5rem;
+    }
+    .mock-screen {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      color: var(--text);
+    }
+    .mock-screen .mock-title { font-weight: 600; font-size: 0.9rem; margin: 0 0 0.2rem; }
+    .mock-screen .mock-sub { font-size: 0.78rem; color: var(--text-muted); margin: 0 0 0.75rem; }
+    .mock-button {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.45rem 1.1rem;
+      border-radius: 6px;
+      outline: 3px solid #f59e0b;
+      outline-offset: 3px;
+    }
+    .mock-arrow { font-size: 0.75rem; font-weight: 600; color: #b45309; margin: 0.6rem 0 0; }
+    .mock-compare { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0.6rem; }
+    .mock-compare .mock-screen { padding: 0.75rem 0.5rem; }
+    .mock-tag { font-size: 0.72rem; font-weight: 600; margin: 0 0 0.4rem; }
+    .mock-tag.good { color: #15803d; }
+    .mock-tag.bad { color: #b91c1c; }
+    .mock-fake-field {
+      height: 1.4rem;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      margin: 0 auto 0.4rem;
+      max-width: 9rem;
+    }
+    @media (prefers-color-scheme: dark) {
+      .mock-arrow { color: #fbbf24; }
+      .mock-tag.good { color: #4ade80; }
+      .mock-tag.bad { color: #f87171; }
+    }
+
+    .fix-list { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.55rem; }
+
     @media (max-width: 480px) {
       h1 { font-size: 1.6rem; }
       .service { grid-template-columns: 2rem 1fr auto; gap: 0 0.65rem; padding: 0.85rem 1rem; }
@@ -245,6 +304,31 @@
           Click below and sign in (Google, Apple, or Microsoft all work) to join the private network. Then open the Tailscale app, sign in with that same account, and leave it connected.
           <br>
           <a class="btn-link" href="https://login.tailscale.com/admin/invite/M1sjt4JBToCXHhcsnEKC11" target="_blank" rel="noopener">Accept Invite</a>
+          <br><br>
+          <strong>Important:</strong> signing in is not enough. You must end up on a page with an <strong>Accept invite</strong> button and click it. If the link only asked you to log in or sign up, click the invite link again after signing in.
+          <div class="mock" aria-label="Illustration of the two screens you might see">
+            <p class="mock-label">What to look for (illustration &mdash; your screen may look a little different)</p>
+            <div class="mock-compare">
+              <div>
+                <p class="mock-tag bad">&#10007; Not done yet</p>
+                <div class="mock-screen">
+                  <p class="mock-title">Log in / Sign up</p>
+                  <div class="mock-fake-field"></div>
+                  <div class="mock-fake-field"></div>
+                  <p class="mock-sub" style="margin:0">Only a sign-in page? Sign in, then click the invite link again.</p>
+                </div>
+              </div>
+              <div>
+                <p class="mock-tag good">&#10003; This is the one</p>
+                <div class="mock-screen">
+                  <p class="mock-title">You've been invited</p>
+                  <p class="mock-sub">to join a private network</p>
+                  <span class="mock-button">Accept invite</span>
+                  <p class="mock-arrow">&#8593; Click this</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -293,6 +377,22 @@
     <p style="color: var(--text-muted); font-size: 0.82rem; margin: -0.25rem 0 1.5rem; line-height: 1.5;">
       All links only work when Tailscale is connected. Jellyfin and Seerr use the same login.
     </p>
+
+    <p class="section-label">Links Not Loading?</p>
+
+    <div class="note" style="margin-bottom: 2.5rem;">
+      <p>If Seerr, Jellyfin, or Immich just spins or says the site can't be reached, it's almost always Tailscale. Go through these in order:</p>
+      <ol class="fix-list">
+        <li><strong>Is Tailscale on?</strong> Open the Tailscale app and make sure it says <strong>Connected</strong> (switch it on if it's off).</li>
+        <li>
+          <strong>Did you actually accept the invite?</strong> Click the
+          <a href="https://login.tailscale.com/admin/invite/M1sjt4JBToCXHhcsnEKC11" target="_blank" rel="noopener">invite link</a> again.
+          The first time, it may only ask you to log in or sign up. Keep going until you see the <strong>Accept invite</strong> button (see the picture in step 2), and click it.
+        </li>
+        <li><strong>Right account in the app?</strong> In the Tailscale app, tap your account name and make sure you're signed in with the same account you used for the invite. If it lists more than one network, pick the one you were invited to.</li>
+        <li><strong>Still stuck?</strong> Text me a screenshot of the Tailscale app and I'll sort it out.</li>
+      </ol>
+    </div>
 
     <p class="section-label">On Your Phone</p>
 
